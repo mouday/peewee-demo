@@ -166,7 +166,7 @@ class BaseModel(Model):
 
 from datetime import datetime
 
-from peewee import CharField, DateTimeField, IntegerField
+from peewee import CharField, DateTimeField, IntegerField, AutoField
 
 from app.model.base_model import BaseModel
 
@@ -176,7 +176,7 @@ class UserModel(BaseModel):
     用户表
     """
 
-    id = IntegerField(primary_key=True)
+    id = AutoField()
     name = CharField(null=False)
     age = IntegerField(null=False)
 
