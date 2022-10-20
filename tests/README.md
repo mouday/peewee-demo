@@ -1,9 +1,25 @@
-# peewee常用操作
+# Python：peewee常用操作CURD
 
 Defining models is similar to Django or SQLAlchemy
 
 >译文：定义模型类似于Django或SQLAlchemy
->
+
+## 目录
+
+- 1、数据库 Database
+    - 1.1、设置参数
+    - 1.2、连接数据库
+    - 1.3、执行原生sql
+- 2、模型 Model
+    - 2.1、定义模型
+    - 2.2、表操作
+- 3、模型的CURD操作
+    - 3.1、写入操作
+    - 3.2、更新数据
+    - 3.3、删除数据
+    - 3.4、取单条数据
+    - 3.5、取多条数据
+
 文档
 - github： [https://github.com/coleifer/peewee](https://github.com/coleifer/peewee)
 - 官方文档：[http://docs.peewee-orm.com/](http://docs.peewee-orm.com/)
@@ -28,11 +44,11 @@ Python 3.7.0
 $ pip show peewee
 Name: peewee
 Version: 3.15.3
-``` 
+```
 
-## 数据库 Database
+## 1、数据库 Database
 
-### 设置参数
+### 1.1、设置参数
 
 ```python
 # -*- coding: utf-8 -*-
@@ -54,7 +70,7 @@ logger.propagate = False  # 不向上传播
 
 ```
 
-### 连接数据库
+### 1.2、连接数据库
 
 ```python
 from app.database import db
@@ -68,7 +84,7 @@ if not db.is_closed():
     
 ```
 
-### 执行原生sql
+### 1.3、执行原生sql
 
 获取多条记录
 
@@ -113,9 +129,9 @@ print(row)
 }
 ```
 
-## 模型 Model
+## 2、模型 Model
 
-## 定义模型
+### 2.1、定义模型
 
 定义基类模型
 
@@ -173,7 +189,7 @@ class UserModel(BaseModel):
 
 ```
 
-### 表操作
+### 2.2、表操作
 
 建表
 
@@ -219,9 +235,9 @@ UserModel.drop_table()
 ```
 
 
-## 模型的CURD操作
+## 3、模型的CURD操作
 
-### 写入操作
+### 3.1、写入操作
 
 插入数据
 
@@ -333,7 +349,7 @@ UserModel.insert_many([
     datetime.datetime(2022, 10, 19, 17, 38, 48, 106360)])
 ```
 
-### 更新数据
+### 3.2、更新数据
 
 更新多条数据
 
@@ -360,7 +376,7 @@ UserModel.set_by_id(1, {'name': 'Jack'})
 ```
 
 
-### 删除数据
+### 3.3、删除数据
 
 
 按照主键删除
@@ -409,7 +425,7 @@ UserModel.truncate_table()
 ('DELETE FROM "tb_user"', [])
 ```
 
-### 取单条数据
+### 3.4、取单条数据
 
 条件查询一条
 
@@ -518,7 +534,7 @@ UserModel.get_or_create(name='Tom', age=23)
     datetime.datetime(2022, 10, 19, 18, 9, 7, 38940)])
 ```
 
-### 取多条数据
+### 3.5、取多条数据
 
 
 查询多条记录
